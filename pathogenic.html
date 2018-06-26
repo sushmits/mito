@@ -1,0 +1,67 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+<title>pathogenic</title>
+<script type="text/javascript">//<![CDATA[
+    <!-- popup javascript -->
+	function getPath(){
+	    var path = document.location;
+	    var str = new String(path);
+	    var len = str.length;
+	    var start = str.lastIndexOf("/");
+	    var document_path = str.substring(start +1,len);
+	    alert(document_path);
+        }
+        function popup_window(url,w,h)
+        {
+	    var width=w;
+	    var height=h;
+	    var from_top=350;
+	    var from_left=500;
+	    var toolbar='no';
+	    var location='no';
+	    var directories='no';
+	    var status='no';
+	    var menubar='no';
+	    var scrollbars='yes';
+	    var resizable='yes';
+	    var loc=location.toString();
+	    alert(loc);
+	    var newurl = loc.substring(loc.lastIndexOf("/")+1).url;
+	    alert(newurl);
+	    var atts='width='+width+'show,height='+height+',top='+from_top+',screenY=';
+	    atts+= from_top+',left='+from_left+',screenX='+from_left+',toolbar='+toolbar;
+	    atts+=',location='+location+',directories='+directories+',status='+status;
+	    atts+=',menubar='+menubar+',scrollbars='+scrollbars+',resizable='+resizable;
+	    window.open(newurl,'win_name',atts);
+	}
+
+//]]></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+<body>
+<h1 align="center">pathogenic</h1>
+    <table align="center" cellpadding="3" cellspacing="3">
+<tr bgcolor="gray"><th>Variant ID</th> <th>Type</th> <th>AscendingDNA change (genomic) (hg19)</th> <th>GERP</th> <th>dbSNP ID</th> <th>number_in_normal</th> <th>freq</th> <th>Sources</th> </tr>
+	<tr bgcolor=#f4f6fa><td align="right">1458</td><td align="right">subst</td><td align="right">m.10398A>G</td><td align="right">-10.3</td><td align="right">rs2853826</td><td align="right">41</td><td align="right">a:g.0.97 ;a:g.0.98 ;a:g.0.97 ;a:g.0.95 ;a:g.0.96 ;a:g.0.96 ;a:g.0.98 ;a:g.0.96 ;a:g.0.97 ;a:g.0.94 ;a:g.0.93 ;a:g.0.93 ;a:g.0.95 ;a:g.0.93 ;a:g.0.98 ;a:g.0.99 ;a:g.0.98 ;a:g.0.97 ;a:g.0.97 ;a:g.0.95 ;a:g.0.95 ;a:g.0.97 ;a:g.0.89 ;a:g.0.97 ;a:g.0.94 ;a:g.0.94 ;a:g.0.92 ;a:g.0.94 ;a:g.0.96 ;a:g.0.95 ;a:g.0.97 ;a:g.0.95 ;a:g.0.94 ;a:g.0.96 ;a:g.0.97 ;a:g.0.96 ;a:g.0.94 ;a:g.0.96 ;a:g.0.95 ;a:g.0.94 ;a:g.0.98 </td><td align="right">; clinVar; Mitomap; Ensembl;</td></tr>
+	<tr bgcolor=#e9edf5><td align="right">1480</td><td align="right">subst</td><td align="right">m.12811T>C</td><td align="right">-1.31</td><td align="right">rs199974018</td><td align="right">4</td><td align="right">t:c.0.99 ;t:c.0.95 ;t:c.0.93 ;t:c.0.94 </td><td align="right">; clinVar; Mitomap; ensembl;</td></tr>
+	<tr bgcolor=#f4f6fa><td align="right">1487</td><td align="right">subst</td><td align="right">m.13708G>A</td><td align="right">-5.73</td><td align="right">rs28359178</td><td align="right">3</td><td align="right">g:a.0.98 ;g:a.0.94 ;g:a.0.93 </td><td align="right">; clinVar; Mitomap; Ensembl;</td></tr>
+	<tr bgcolor=#e9edf5><td align="right">1351</td><td align="right">subst</td><td align="right">m.3796A>G</td><td align="right">-6.85</td><td align="right">rs28357970</td><td align="right">4</td><td align="right">a:t.0.94 ;a:c.0.15 ;a:c.0.10 ;a:t.0.95 </td><td align="right">; clinVar; Mitomap; Ensembl;</td></tr>
+	<tr bgcolor=#f4f6fa><td align="right">1352</td><td align="right">subst</td><td align="right">m.3796A>T</td><td align="right">-6.85</td><td align="right">rs28357970</td><td align="right">4</td><td align="right">a:t.0.94 ;a:c.0.15 ;a:c.0.10 ;a:t.0.95 </td><td align="right">; clinvar; ensembl;</td></tr>
+	<tr bgcolor=#e9edf5><td align="right">1340</td><td align="right">subst</td><td align="right">m.3308T>C</td><td align="right">3.08</td><td align="right">rs28358582</td><td align="right">5</td><td align="right">t:c.0.96 ;t:c.0.97 ;t:c.0.93 ;t:c.0.92 ;t:c.0.94 </td><td align="right">; clinvar; ensembl;</td></tr>
+	<tr bgcolor=#f4f6fa><td align="right">1341</td><td align="right">subst</td><td align="right">m.3308T>G</td><td align="right">3.08</td><td align="right">rs28358582</td><td align="right">5</td><td align="right">t:c.0.96 ;t:c.0.97 ;t:c.0.93 ;t:c.0.92 ;t:c.0.94 </td><td align="right">; clinVar; Mitomap; Ensembl;</td></tr>
+	<tr bgcolor=#e9edf5><td align="right">1294</td><td align="right">subst</td><td align="right">m.961T>C</td><td align="right">-8.88</td><td align="right">rs3888511</td><td align="right">2</td><td align="right">t:c.0.72 ;t:c.0.76 </td><td align="right">; clinvar; ensembl;</td></tr>
+	<tr bgcolor=#f4f6fa><td align="right">1295</td><td align="right">subst</td><td align="right">m.961T>G</td><td align="right">-8.88</td><td align="right">rs3888511</td><td align="right">2</td><td align="right">t:c.0.72 ;t:c.0.76 </td><td align="right">; clinVar; Mitomap; Ensembl;</td></tr>
+	<tr bgcolor=#e9edf5><td align="right">1310</td><td align="right">subst</td><td align="right">m.1291T>C</td><td align="right">-8.65</td><td align="right">rs267606620</td><td align="right">1</td><td align="right">t:c.0.94 </td><td align="right">; clinVar; Mitomap; Ensembl;</td></tr>
+	<tr bgcolor=#f4f6fa><td align="right">1338</td><td align="right">subst</td><td align="right">m.3290T>C</td><td align="right">-8.11</td><td align="right">rs199474665</td><td align="right">1</td><td align="right">t:c.0.95 </td><td align="right">; clinVar; Mitomap; Ensembl;</td></tr>
+	<tr bgcolor=#e9edf5><td align="right">1344</td><td align="right">subst</td><td align="right">m.3394T>C</td><td align="right">3.56</td><td align="right">rs41460449</td><td align="right">1</td><td align="right">t:a.0.05 </td><td align="right">; clinVar; Mitomap; Ensembl;</td></tr>
+	<tr bgcolor=#f4f6fa><td align="right">1355</td><td align="right">subst</td><td align="right">m.4025C>T</td><td align="right">-1.52</td><td align="right">rs397515509</td><td align="right">1</td><td align="right">c:t.0.98 </td><td align="right">; clinVar; ensembl;</td></tr>
+	<tr bgcolor=#e9edf5><td align="right">1389</td><td align="right">subst</td><td align="right">m.5814T>C</td><td align="right">-3.16</td><td align="right">rs200077222</td><td align="right">1</td><td align="right">t:c.0.94 </td><td align="right">; clinVar; Mitomap;</td></tr>
+	<tr bgcolor=#f4f6fa><td align="right">4922</td><td align="right">subst</td><td align="right">m.8618T>C</td><td align="right">2.96</td><td align="right">rs28358885</td><td align="right">2</td><td align="right">t:c.0.95 ;t:c.0.95 </td><td align="right">; clinVar;</td></tr>
+	<tr bgcolor=#e9edf5><td align="right">1477</td><td align="right">subst</td><td align="right">m.12338T>C</td><td align="right">3.28</td><td align="right">rs201863060</td><td align="right">2</td><td align="right">t:a.0.07 ;t:a.0.05 </td><td align="right">; clinVar; Mitomap;</td></tr>
+	<tr bgcolor=#f4f6fa><td align="right">1511</td><td align="right">subst</td><td align="right">m.15257G>A</td><td align="right">3.34</td><td align="right">rs41518645</td><td align="right">1</td><td align="right">g:a.0.90 </td><td align="right">; clinVar; Mitomap; Ensembl;</td></tr>
+</td></tr></td></tr></table>
+</body>
+</html>

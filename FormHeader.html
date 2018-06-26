@@ -1,0 +1,31 @@
+<!-- FormHeader.html -->
+<div class="row"> <div class="col-lg-5">
+<div class="pick_barcode" style="padding-left:25px;width:100%;height:33px;"  >
+	<h3 style="font-family:Verdana;"> Pick barcodes from the following sets: </h3>
+</div>
+<br><br>
+<div class="button_div" style="padding-left: 25px; ">
+    <button type="submit" id="submit_form" class="submit_button" >Submit</button>
+    <button  type="reset" class="submit_button" id="ResetButton" onclick="resetAction()"> Reset </button>
+</div>
+<br>
+       <div>
+		<input type="hidden" name="json_input">
+		<table id="selectionTable" class="table table-bordered" >
+			<thead>
+				<tr>
+					<th> Set Name </th>
+					<th> Number </th>
+					<th> Slide to select the number of sets</th>
+				</tr>
+			</thead>
+			<tbody id="tbody">
+
+				<tr>
+					<td> Pre-selected barcodes
+					(as sequences (space/comma separated) ) </td>
+					<td> - </td>
+					<td>
+						<textarea placeholder="give barcodeset as , or ' ' separated" rows="5" cols="40" name="Preselectedbarcodes" id="Preselectedbarcodes" ></textarea>
+					</td>
+				</tr>
