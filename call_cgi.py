@@ -42,6 +42,7 @@ def print_table(tableName,response, c):
         response+="""
                 <table class="table table-condensed table-responsive-sm" >
                     <tr>
+			<th>Patient ID </th>
                       <th>Seq</th>
                         <th>Pos</th>
                         <th>left_flank</th>
