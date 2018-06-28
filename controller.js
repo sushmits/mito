@@ -7,6 +7,32 @@ d="formId" action="displayTable()" name="formSelectTable">
   <input type="submit">
 </form>
 */
+
+function renderQueryCreationTaskBar()
+{
+	const element = <h1>Hello, world</h1i>;
+	ReactDOM.render(element, document.getElementById('queryCreationDivId'));
+	const query = <textarea  placeholder="this the query that is getting built" readonly rows="4" cols="50"> </textarea> ;
+
+	ReactDOM.render(query, document.getElementById('queryCreationDivId'));
+	
+	const andButton = <input type="button"> AND </input>;
+	 ReactDOM.render(andButton, document.getElementById('queryCreationDivId'));
+
+        const orButton = <input type="button"> AND </input>;
+         ReactDOM.render(orButton, document.getElementById('queryCreationDivId'));
+
+        const Button_ob = <input type="button"> AND </input>;
+         ReactDOM.render(Button_ob, document.getElementById('queryCreationDivId'));
+
+        const Button_cb = <input type="button"> AND </input>;
+         ReactDOM.render(Button_cb, document.getElementById('queryCreationDivId'));
+
+        const inputCondition = <textarea> AND </textarea>;
+         ReactDOM.render(inputCondition, document.getElementById('queryCreationDivId'));
+}
+
+
 function viewTable()
 {
 	var $form = $('[name="formSelectionTable"]');

@@ -18,21 +18,29 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="styling.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="controller.js"></script>
+        <!--script src="controller.js"></script-->
+	 <!--script src="reactController.js" type="text/babel"></script-->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
         <!-- Optional theme -->
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
         <!-- Latest compiled and minified JavaScript -->
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-        <title> Barcode Caddy </title>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.6/react.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.6/react-dom.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+	<script src="reactController.js" type="text/babel"></script>
+	<title> Mito Database Visualization </title>
     </head>
 
 
 <div class="row" style="background-color: #2E4053;">
 	<!--div class="col-lg-5 heading"-->
 	<div class="col-xs-12 heading">
-		<h1 style=""> Barcode Caddy </h1>
+		<h1 style=""> Mito Database Visualization </h1>
 
 	</div>
 
@@ -77,6 +85,14 @@
 
                 <h4 class="subheadings">MITO DATABASE</h4>
   		<div class="dropdown">
+
+</div>
+
+<div id="queryCreationDivId" onload="renderQueryCreationTaskBar()" class="row">
+
+</div>
+
+<div class="row">
 			<form id="formId" name="formSelectionTable" action="javascript:viewTable()" onSubmit="viewTable()">
 				<!--select name="tableSelection" onchange="updateHiddenInput()"-->
                                 <select name="tableSelection" >
@@ -87,8 +103,11 @@
 				<!--input type="hidden" id="optionSelectionId" name="optionSelectedId" value="3487"-->
   				<input type="submit"> 
 			</form>
-
-
+			<div id="inputs">
+				<script type="text/babel">
+					renderQueryCreationTaskBar();
+				</script>
+			</div>
 		<div id="results">
 
 		</div>
