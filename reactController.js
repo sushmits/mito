@@ -45,50 +45,57 @@ const element = (
 	</div>);
 
         ReactDOM.render(element, document.getElementById('queryCreationDivId'));*/
-class ButtonClass extends React.Component {
-        render() {
-                return (
-                        <button className = "btn btn-primary">
-                                {this.props.value}
-                        </button>
-                ) ;
-        }
-}	
 
-//	ReactDOM.render(<ButtonAsRequired /> ,  document.getElementById('queryCreationDivId')) ;
-	
-
-
-class ButtonsAsRequired extends React.Component {
-	renderButton(stringToBePassed){
-		return <ButtonClass value={stringToBePassed} /> ;
+	class ButtonRequired extends React.Component {
+	render(){
+		return (
+		<button className="btn btn-primary">
+			{this.props.value}
+		</button>
+		);
+	}
 	}
 
-	render () {
+	class CreationOfButtons extends React.Component {
+	renderSquare(i){
+		return <ButtonRequired value={i}/>;
+	}
+	
+	renderTextArea(){
+		return <TextBox/> ;
+	}
+	render(){
 		
 		return (
 		<div>
-			{this.renderButton('AND')}
-			{this.renderButton('OR')}
-                        {this.renderButton('ob')}
-                        {this.renderButton('cb')}
+			{this.renderTextArea()}
+			<br/>
+			{this.renderSquare('And')}
+			{' '}
+                        {this.renderSquare('Or')}
+			{' ' }
+                        {this.renderSquare('(')}
+			{' '} 
+                        {this.renderSquare(')')}	
+			<br/>
+			{this.renderTextArea()}
 		</div>
-	);
-	}
-}
+		);
 
-        ReactDOM.render(<ButtonAsRequired /> ,  document.getElementById('queryCreationDivId')) ;
-/*
-class ButtonClass extends React.Component {
-	render() {
-		return (
-			<button className = "btn btn-primary">
-				{this.props.value}
-			</button>
-		) ;
 	}
-}
-*/
+	}
+	
+	class TextBox extends React.Component {
+	render(){
+		return (
+			<textarea placeholder={'This is where the query will get built'} rows={'5'} >
+			</textarea>
+		);
+	}	
+
+	}
+	ReactDOM.render(<CreationOfButtons/>, document.getElementById('queryCreationDivId'));
+
 }
 
 function viewTable()
