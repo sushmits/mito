@@ -1,12 +1,3 @@
-/*
-d="formId" action="displayTable()" name="formSelectTable">
-<select name="tableSelection">
-  <option value="patient_nucleobase">patient_nucleobase</option>
-  <option value="pathogenic_prob">pathogenic_prob</option>
-</select>
-  <input type="submit">
-</form>
-*/
 
 function renderQueryCreationTaskBar()
 {
@@ -49,7 +40,7 @@ const element = (
 	class ButtonRequired extends React.Component {
 	render(){
 		return (
-		<button className="btn btn-primary">
+		<button className="btn btn-primary" onClick={this.props.onClick}>
 			{this.props.value}
 		</button>
 		);
@@ -57,31 +48,59 @@ const element = (
 	}
 
 	class CreationOfButtons extends React.Component {
-	renderSquare(i){
-		return <ButtonRequired value={i}/>;
+	constructor(props){
+	super(props);
+	this.state = {
+      		tableNames: ['patient_nucleobase','pathogenic_prob'],
+    	};
 	}
+
 	
 	renderTextArea(){
 		return <TextBox/> ;
 	}
+
+	
 	render(){
 		
 		return (
 		<div>
-			{this.renderTextArea()}
+			<span class="label">Choose table:</span> {this.renderSelectionBox(this.state.tableNames)}
+			<ButtonRequired value="add Filter" onClick={() => this.addFilterMethod()} />
+			<span class="label">Add Filter</span>
 			<br/>
-			{this.renderSquare('And')}
+			{/*{this.renderTextArea()}
+			<br/>
+			{this.renderButton('And')}
 			{' '}
-                        {this.renderSquare('Or')}
+                        {this.renderButton('Or')}
 			{' ' }
-                        {this.renderSquare('(')}
+                        {this.renderButton('(')}
 			{' '} 
-                        {this.renderSquare(')')}	
+                        {this.renderButton(')')}	
 			<br/>
-			{this.renderTextArea()}
+			{this.renderTextArea()}*/}
 		</div>
 		);
 
+	}
+  	addFilterMethod() {
+			return (<div> <span class="label">Add Filter</span>
+                        {this.renderTextArea()}
+                        <ButtonRequired vaule="And" />
+                        {' '}
+                         <ButtonRequired vaule="Or" />
+                        {' ' }
+			<ButtonRequired value="(" />
+                        {' '}
+			<ButtonRequired value=")" />
+                        {this.renderTextArea()}
+			</div>
+);
+  	}
+
+	renderSelectionBox(optionsToShow){
+	return <SelectionBox value={optionsToShow} />
 	}
 	}
 	
@@ -91,9 +110,45 @@ const element = (
 			<textarea placeholder={'This is where the query will get built'} rows={'5'} >
 			</textarea>
 		);
-	}	
+	}
+	
 
 	}
+
+
+// changes on friday
+
+function Option(props) {
+  return (
+    <option className="options" >
+      {props.value}
+    </option>
+  );
+}
+
+class SelectionBox extends React.Component{
+
+
+
+renderOption(i) {
+    return (
+      <Option
+        value={i}
+        //onClick={() => this.handleClick(i)}
+      />
+    );
+  }
+
+render(){
+return (
+	<select value="Select the table">
+	{this.renderOption(this.props.value[0])}
+	{this.renderOption(this.props.value[1])} 
+	</select>
+);
+}
+
+}
 	ReactDOM.render(<CreationOfButtons/>, document.getElementById('queryCreationDivId'));
 
 }
