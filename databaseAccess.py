@@ -17,13 +17,14 @@ cur = con.cursor()
 
 
 cur.execute("""PRAGMA table_info(patient_nucleobase)""")
-response=""
+response="""{"tableNames":" """
 for row in cur.execute("""PRAGMA table_info(patient_nucleobase)"""):
-	#response+="""<tr>"""
-	for column in row:
-		response += str(column)
-		#response+="""</tr>"""
+	#response+="""<tr>""
+	response += row[1]+","
+	#response+="""</tr>"""
 
+response = response[:len(response)-1]
+response+=""" " }"""
 print(response)
 #read_csv_todb('di_47_p4.filt.var.csv','patient_nucleobase' ,cur)
 #read_csv_todb('di_47_pe.filt.var.csv','patient_nucleobase' , cur)

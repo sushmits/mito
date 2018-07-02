@@ -1,161 +1,164 @@
 
-function renderQueryCreationTaskBar()
-{
-	/*const element = <h1>Hello, world</h1>;
-	ReactDOM.render(element, document.getElementById('#queryCreationDivId'));
 
-        const query = <textarea  placeholder="this the query that is getting built" readonly rows="4" cols="50"> </textarea> ;
 
-        ReactDOM.render(query, document.getElementById('#queryCreationDivId'));
+//import ReactDOM from 'react-dom';
 
-        const andButton = <input type="button"> AND </input>;
-         ReactDOM.render(andButton, document.getElementById('#queryCreationDivId'));
 
-        const orButton = <input type="button"> AND </input>;i
-         ReactDOM.render(orButton, document.getElementById('#queryCreationDivId'));
-
-        const Button_ob = <input type="button"> AND </input>;
-         ReactDOM.render(Button_ob, document.getElementById('#queryCreationDivId'));
-
-        const Button_cb = <input type="button"> AND </input>;
-         ReactDOM.render(Button_cb, document.getElementById('#queryCreationDivId'));
-
-        const inputCondition = <textarea> AND </textarea>;
-         ReactDOM.render(inputCondition, document.getElementById('#queryCreationDivId'));	
-	
-
-const element = (
-	<div>
-	<h1>Hello, world</h1>
-        <textarea  placeholderText="this the query that is getting built" readOnly={true} rows="4" cols="50"> </textarea> 
-        <button className="btn btn-primary"> AND </button>
-	<button className="btn btn-default btn-xs"> OR </button>
-	<button className="btn btn-default btn-xs"> OB </button>
-	<button className="btn btn-default btn-xs"> CB </button>
-        <textarea> </textarea>
-	</div>);
-
-        ReactDOM.render(element, document.getElementById('queryCreationDivId'));*/
-
-	class ButtonRequired extends React.Component {
+class ButtonRequired extends React.Component {
 	render(){
 		return (
-		<button className="btn btn-primary" onClick={this.props.onClick}>
-			{this.props.value}
-		</button>
+			<button className="btn btn-primary" onClick={this.props.onClick}>
+				{this.props.value}
+			</button>
 		);
 	}
-	}
+}
 
-	class CreationOfButtons extends React.Component {
+class CreationOfButtons extends React.Component {
 	constructor(props){
-	super(props);
-	this.state = {
-      		tableNames: ['patient_nucleobase','pathogenic_prob'],
-    	};
+		super(props);
+		this.state = {
+			tableNames: ['patient_nucleobase','pathogenic_prob'],
+			operatorAndOr: ['And', 'Or'],
+			condition: ['=','like','!=','<=','>=','<','>']
+		};
 	}
 
-	
-	renderTextArea(){
-		return <TextBox/> ;
+
+	renderTextArea( className){
+		return <TextBox className={className} /> ;
 	}
 
+	$("#tableNamesId").bind("onChange",updateAttributeList());
+
+	function updateAttributeList()
+	{	
+		var tableDropDown =  document.getElementById("tableNamesId");
+		var valueSelected = tableDropDown.options[tableDropDown.selectedIndex].value;
+		$.ajax({
+ 		 	url: "",
+  			type: "POST",
+  			data: {"tableName" : valueSelected},
+  			dataType: "json",
+			 success: function(response){
+    						var res = JSON.parse(response);
+						var resValue=res["attributes"];
+						this.state.attributes = resValue.split(",") ;		
+  					}
+			});
+
+	}
 	
 	render(){
-		
+
 		return (
-		<div>
-			<span class="label">Choose table:</span> {this.renderSelectionBox(this.state.tableNames)}
-			<ButtonRequired value="add Filter" onClick={() => this.addFilterMethod()} />
-			<span class="label">Add Filter</span>
-			<br/>
-			{/*{this.renderTextArea()}
-			<br/>
-			{this.renderButton('And')}
-			{' '}
-                        {this.renderButton('Or')}
-			{' ' }
-                        {this.renderButton('(')}
-			{' '} 
-                        {this.renderButton(')')}	
-			<br/>
-			{this.renderTextArea()}*/}
-			<div id="buttonDivId" >
+			<div>
+				<span class="label">Choose table:</span> {this.renderSelectionBox(this.state.tableNames, "Select a table", "tableNamesId")}
+				<br/>
+				<ButtonRequired value="add Filter" onClick={() => this.addFilterMethod()} />
+				<br/>
+                                <br/>
+				<div id="filterDiv" >
+				</div>
 			</div>
-		</div>
 		);
 
 	}
-  	addFilterMethod() {
-			const addButton = (<div> <span class="label">Add Filter</span>
-                        {this.renderTextArea()}
-                        <ButtonRequired value="And" />
-                        {' '}
-                         <ButtonRequired value="Or" />
-                        {' ' }
+	addFilterMethod() {
+		const addButton = (
+			<div>
+			{this.renderTextArea("query")}
+			<br/>
+			{/*}<ButtonRequired value="And" />
+			{' '}
+			<ButtonRequired value="Or" />
+			{' ' }
 			<ButtonRequired value="(" />
-                        {' '}
+			{' '}
 			<ButtonRequired value=")" />
-                        {this.renderTextArea()}
+			{this.renderTextArea()}*/}
+			{this.renderSelectionBox(this.state.operatorAndOr, "Select operator","operatorsId")}
+			{' '}
+			{this.renderSelectionBox(this.state.attributes, "Select attribute", "attributesId")}
+			{' '}
+			{this.renderSelectionBox(this.state.condition, "Select condition","conditionsId")}
+			{' '}
+			{/*this.renderTextArea("condition")*/}
+			<input type="text" class="condition" placeholder="Give condition"></input>
 			</div>
-);
-		        ReactDOM.render(addButton, document.getElementById('buttonDivId'));
-		
-  	}
+	);
+		ReactDOM.render(addButton, document.getElementById('filterDiv'));
 
-	renderSelectionBox(optionsToShow){
-	return <SelectionBox value={optionsToShow} />
 	}
-	}
-	
-	class TextBox extends React.Component {
+
+renderSelectionBox(optionsToShow, defaultLabel , id){
+	return <SelectionBox value={optionsToShow} defaultLabel={defaultLabel} id={id}/>
+}
+}
+
+class TextBox extends React.Component {
 	render(){
 		return (
-			<textarea placeholder={'This is where the query will get built'} rows={'5'} >
+			<textarea placeholder={"Your query will be built here"}>
 			</textarea>
 		);
 	}
-	
 
-	}
+
+}
 
 
 // changes on friday
 
 function Option(props) {
-  return (
-    <option className="options" >
-      {props.value}
-    </option>
-  );
+	return (
+		<option className="options" >
+			{props.value}
+		</option>
+	);
 }
 
 class SelectionBox extends React.Component{
 
+	createOptions = (valuePassed) => {
+	    let optionsList = []
+
+	    // Outer loop to create parent
+	    for (let i = 0; i < valuePassed.length; i++) {
 
 
-renderOption(i) {
-    return (
-      <Option
-        value={i}
-        //onClick={() => this.handleClick(i)}
-      />
-    );
-  }
+					optionsList.push(this.renderOption(valuePassed[i]))
+	      }
 
-render(){
-return (
-	<select value="Select the table">
-	{this.renderOption(this.props.value[0])}
-	{this.renderOption(this.props.value[1])} 
-	</select>
-);
+				return optionsList ;
+	    }
+
+
+
+	renderOption(i) {
+		return (
+			<Option
+				value={i}
+				//onClick={() => this.handleClick(i)}
+			/>
+		);
+	}
+
+	render(){
+		return (
+			<select>
+				<option selected disabled hidden>{this.props.defaultLabel}</option>
+				{this.createOptions(this.props.value)}
+			</select>
+
+		);
+	}
+
 }
+ReactDOM.render(<CreationOfButtons/>, document.getElementById('queryCreationDivId'));
 
-}
-	ReactDOM.render(<CreationOfButtons/>, document.getElementById('queryCreationDivId'));
 
-}
+
 
 function viewTable()
 {
@@ -313,7 +316,6 @@ function thanksFeedbackMethod()
                 success: function(response){
                         $("#results").html(response);
                 }
-
             });*/
 
 	var $form = $('[name="feedbackform"]');
