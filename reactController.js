@@ -19,6 +19,7 @@ class CreationOfButtons extends React.Component {
 		super(props);
 		this.state = {
 			tableNames: ['patient_nucleobase','pathogenic_prob'],
+			attributes:['seq', 'patient_id'],
 			operatorAndOr: ['And', 'Or'],
 			condition: ['=','like','!=','<=','>=','<','>']
 		};
@@ -29,7 +30,7 @@ class CreationOfButtons extends React.Component {
 		return <TextBox className={className} /> ;
 	}
 
-	$("#tableNamesId").bind("onChange",updateAttributeList());
+/*	$("#tableNamesId").bind("onChange",updateAttributeList());
 
 	function updateAttributeList()
 	{	
@@ -47,7 +48,7 @@ class CreationOfButtons extends React.Component {
   					}
 			});
 
-	}
+	} */
 	
 	render(){
 
