@@ -80,16 +80,18 @@ const element = (
                         {this.renderButton(')')}	
 			<br/>
 			{this.renderTextArea()}*/}
+			<div id="buttonDivId" >
+			</div>
 		</div>
 		);
 
 	}
   	addFilterMethod() {
-			return (<div> <span class="label">Add Filter</span>
+			const addButton = (<div> <span class="label">Add Filter</span>
                         {this.renderTextArea()}
-                        <ButtonRequired vaule="And" />
+                        <ButtonRequired value="And" />
                         {' '}
-                         <ButtonRequired vaule="Or" />
+                         <ButtonRequired value="Or" />
                         {' ' }
 			<ButtonRequired value="(" />
                         {' '}
@@ -97,6 +99,8 @@ const element = (
                         {this.renderTextArea()}
 			</div>
 );
+		        ReactDOM.render(addButton, document.getElementById('buttonDivId'));
+		
   	}
 
 	renderSelectionBox(optionsToShow){
